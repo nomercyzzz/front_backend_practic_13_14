@@ -20,11 +20,11 @@ const express = require('express');
  app.post('/register', (req, res) => {
     const { username, password } = req.body;
     if (users.find(u => u.username === username)) {
-        return res.status(400).json({ message: 'User already exists' });
+        return res.status(400).json({ message: 'Пользователь с данным именем уже существует' });
     }
     const newUser = { id: users.length + 1, username, password };
     users.push(newUser);
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({ message: 'Поздравляю, вы зарегистрировались' });
  });
 
  app.post('/login', (req, res) => {
@@ -36,7 +36,7 @@ password);
 expiresIn: '1h' });
         res.json({ token });
     } else {
-        res.status(401).json({ message: 'Invalid credentials' });
+        res.status(401).json({ message: 'Неверные данные' });
     }
  });
 
